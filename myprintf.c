@@ -125,9 +125,7 @@ static int printi(char **out, int i, int b, int sg, int width, int pad, int letb
 
 static int printff(char **out, double val, int width, int pad)
 {
-	char print_buf[PRINT_BUF_LEN];
-	register char *s;
-	register int t, neg = 0, pc = 0;
+	register int pc = 0;
 
 	if (width > 9)
 		width = 9;
@@ -280,16 +278,4 @@ int mysprintf(char *out, const char *format, ...)
 	
 	va_start(args, format);
 	return print(&out, format, args);
-}
-
-void printfloat(float val)
-{
-	if (val < 0)
-	{
-		myprintf("-");
-		val = -val;
-	}
-	int32_t d = val;
-	int32_t f = (int32_t)(val * 10000) % 10000;
-	myprintf("%d.%04d", d, f);
 }
