@@ -73,7 +73,7 @@ static void RESET_DEVICE()
 #include <public_l1.h>
 #elif defined(STM32F0XX_MD) || defined(STM32F0XX_LD)
 #include <public_f0.h>
-#elif defined(STM32F40_41xxx)
+#elif defined(STM32F40_41xxx) || defined(STM32F429_439xx)
 #include <public_f4.h>
 #else
 #error NO_PART
