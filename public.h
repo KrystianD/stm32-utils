@@ -20,6 +20,7 @@ extern volatile uint32_t ticks;
 void _errorloop () __attribute__ ((noreturn));
 
 #define SWAP16(x) (((x & 0x00ff) << 8) | ((x & 0xff00) >> 8))
+#define _BV(x) (1 << (x))
 
 // Interrupts
 #define ENABLE_INTERRUPT(x) NVIC->ISER[(x) / 32] = 1 << ((x) % 32)
