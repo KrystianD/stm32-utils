@@ -128,6 +128,9 @@ static int printff(char **out, double val, int width, int pad)
 	char print_buf[PRINT_BUF_LEN];
 	register char *s;
 	register int t, neg = 0, pc = 0;
+
+	if (width > 9)
+		width = 9;
 	
 	if (val < 0)
 	{
@@ -151,16 +154,15 @@ static int printff(char **out, double val, int width, int pad)
 			mult *= 10;
 		multSize = width;
 	}
-	mult *= 10;
-	
+
 	int32_t d = val;
-	int32_t f = (int32_t)((val - d) * mult);
+	int32_t f = (int32_t)((val - d) * mult * 10);
 	
 	if (f % 10 >= 5)
 	{
 		f = f / 10;
 		f += 1;
-		if (f == mult / 10)
+		if (f == mult)
 		{
 			f = 0;
 			d += 1;
@@ -171,7 +173,7 @@ static int printff(char **out, double val, int width, int pad)
 		f = f / 10;
 	}
 	
-	pc = printi(out, d, 10, 0, 0, 0, 'a');
+	pc += printi(out, d, 10, 0, 0, 0, 'a');
 	printchar(out, '.');
 	pc++;
 	pc += printi(out, f, 10, 0, multSize, PAD_ZERO, 'a');
