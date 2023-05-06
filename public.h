@@ -43,6 +43,12 @@ static void st_delay_ms (uint32_t ms)
 	while (ticks < end);
 }
 
+static void RESET_DEVICE()
+{
+	*((unsigned long*)0x0E000ED0C) = 0x05FA0004;
+	for(;;);
+}
+
 #define AF0 0
 #define AF1 1
 #define AF2 2
