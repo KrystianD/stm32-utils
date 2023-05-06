@@ -7,13 +7,13 @@
 extern "C" {
 #endif
 extern void myputchar(int c);
-#ifdef __cplusplus
-}
-#endif
 
 int myprintf(const char *format, ...);
 int myvprintf(const char *format, va_list args);
 int mysprintf(char *out, const char *format, ...);
 void printfloat(float val);
+#ifdef __cplusplus
+}
+#endif
 
 #endif
