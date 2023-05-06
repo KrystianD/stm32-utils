@@ -14,6 +14,7 @@ void myputchar(int c)
 
 TEST(myprintf, decimal_pos)
 {
+	PRINTF("%x", 0xa, "a");
 	PRINTF("%d", 10, "10");
 }
 TEST(myprintf, decimal_neg)
@@ -28,6 +29,10 @@ TEST(myprintf, decimal_width)
 TEST(myprintf, float_def)
 {
 	PRINTF("%f", 1.23, "1.230000");
+	PRINTF("%f", 1.234567, "1.234567");
+	PRINTF("%f", 1.2345678, "1.234568");
+	PRINTF("%f", 1.2345670, "1.234567");
+	PRINTF("%f", 1.000567, "1.000567");
 }
 TEST(myprintf, float_width)
 {
@@ -72,6 +77,10 @@ TEST(myprintf, float_neg_space)
 {
 	PRINTF("%6f", 1.1234, "1.123400");
 	PRINTF("%-6f", 1.1234, " 1.123400");
+}
+TEST(myprintf, other)
+{
+	PRINTF("%9f", 1.066856831, "1.066856831");
 }
 
 int main(int argc, char **argv)
